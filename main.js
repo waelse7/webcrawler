@@ -1,4 +1,6 @@
 const { crawlPage } = require('./crawl.js')
+const { printReport } = require('./report.js')
+
 async function main(){
     if (process.argv.length !==3){
         console.error("Only one arguement is allowed")
@@ -7,9 +9,7 @@ async function main(){
     const baseURL = process.argv[2]
     const pages = await crawlPage(baseURL, baseURL, {})
 
-    for (const p of Object.entries(pages)){
-        console.log(p)
-    }
+    printReport(pages)
 }
 
 main()
